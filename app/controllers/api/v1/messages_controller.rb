@@ -27,9 +27,11 @@ module Api
             private
 
             def set_user
+              @user = current_user
             end
 
             def set_messages
+              messages = { sent: @user.sent_messages, received: @user.received_messages, outbox: @user.sent_messages.where(delivered: false) }
             end
 
           end
