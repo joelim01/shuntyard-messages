@@ -5,10 +5,6 @@ module ApiExceptions
 
     ERROR_DESCRIPTION = Proc.new {|code, message| {status: "error | failure", code: code, message: message}}
     ERROR_CODE_MAP = {
-      "LoginError::UnknownUser" =>
-        ERROR_DESCRIPTION.call(400, "Can't find that username"),
-      "RegisterError::MalformedEmail" =>
-        ERROR_DESCRIPTION.call(400, "Email doesn't appear to be a proper email"),
       "MessageError::MissingSubject" =>
         ERROR_DESCRIPTION.call(400, "Message requires a subject"),
       "MessageError::MissingBody" =>
