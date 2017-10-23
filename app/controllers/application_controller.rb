@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   include Knock::Authenticable
+  include ::ActionController::Serialization
+  
   rescue_from ApiExceptions::BaseException, :with => :render_error_response
 
   def render_error_response(error)
