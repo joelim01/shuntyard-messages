@@ -16,6 +16,8 @@ module Api
             end
 
             def create
+              message_generator = MessageGenerator.new(user_id: current_user.id, message_params)
+              render json: message_generator
             end
 
             def update
@@ -32,6 +34,10 @@ module Api
 
             def set_messages
               messages = { sent: @user.sent_messages, received: @user.received_messages, outbox: @user.sent_messages.where(delivered: false) }
+            end
+
+            def message_params
+              params.require(:message).permit(:recipients, :subject, :body, :send_on)
             end
 
           end
