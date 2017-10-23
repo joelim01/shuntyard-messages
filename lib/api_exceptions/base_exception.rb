@@ -8,7 +8,13 @@ module ApiExceptions
       "LoginError::UnknownUser" =>
         ERROR_DESCRIPTION.call(400, "Can't find that username"),
       "RegisterError::MalformedEmail" =>
-        ERROR_DESCRIPTION.call(400, "Email doesn't appear to be a proper email")
+        ERROR_DESCRIPTION.call(400, "Email doesn't appear to be a proper email"),
+      "MessageError::MissingSubject" =>
+        ERROR_DESCRIPTION.call(400, "Message requires a subject"),
+      "MessageError::MissingBody" =>
+        ERROR_DESCRIPTION.call(400, "Message requires a body"),
+      "MessageError::MissingRecipient" =>
+        ERROR_DESCRIPTION.call(400, "Message requires at least one recipient"),
     }
 
     def initialize
