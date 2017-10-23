@@ -1,26 +1,28 @@
 module Api
   module V1
     class MessagesController < ApplicationController
-      before_filter: :set_user, :set_messages
+      before_action :set_user, :set_messages
 
             def index
+              render json: @messages
             end
 
             def show
-            end
-
-            def new
+              render json: @message
             end
 
             def edit
+              render json: @message
             end
 
             def create
-              message_generator = MessageGenerator.new(user_id: current_user.id, message_params)
-              render json: message_generator
+              message_generator = MessageGenerator.new(user_id: 1, message_params: message_params)
+              render json: message_generator.message
             end
 
             def update
+              message_updater = MessageUpdater.new(id: @message.id, user_id: @user.id, message_params: message_params)
+              render json: message_generator.message
             end
 
             def destroy
@@ -33,7 +35,13 @@ module Api
             end
 
             def set_messages
-              messages = { sent: @user.sent_messages, received: @user.received_messages, outbox: @user.sent_messages.where(delivered: false) }
+              if params[:id]
+                @message  = Message.find(params[:id])
+              elsif @user.present?
+                @messages = { sent: @user.sent_messages, received: @user.received_messages, outbox: @user.sent_messages.where(delivered: false) }
+              else
+                []
+              end
             end
 
             def message_params
