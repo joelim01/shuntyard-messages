@@ -1,6 +1,6 @@
 module ApiExceptions
   class MessageError < ApiExceptions::BaseException
-    class MissingBody < ApiExceptions::PurchaseError
+    class MissingBody < ApiExceptions::MessageError
     end
   end
 end
