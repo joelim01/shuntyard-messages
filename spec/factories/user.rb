@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    email: Faker::email
-    password: '12345'
+    email Faker::Internet.email
+    password '12345'
   end
 end

@@ -19,9 +19,10 @@ gem 'puma', '~> 3.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
-gem 'rspec'
-gem 'factory_bot'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
 gem 'faker'
+gem 'database_cleaner'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
