@@ -5,7 +5,7 @@ class MessageUpdater
 
   def initialize(user_id:, recipients:, body:, subject:)
     @user_id = user_id
-    @recipients = message_params[:recipients]
+    @recipients = User.find_by(username: message_params[:recipients])
     @send_on =  message_params[:send_on]
     @body =  message_params[:body]
     @subject =  message_params[:subject]
