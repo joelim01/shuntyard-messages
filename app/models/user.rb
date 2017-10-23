@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :received_messages, :through => :messages_recipients, :source=> :message
   has_many :messages_senders
   has_many :messages_recipients
+  validates :email, presence: true, email: true
 end
