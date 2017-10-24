@@ -11,6 +11,8 @@ module ApiExceptions
         ERROR_DESCRIPTION.call(400, "Message requires a body"),
       "MessageError::MissingRecipient" =>
         ERROR_DESCRIPTION.call(400, "Message requires at least one recipient"),
+      "MessageError::MissingSender" =>
+        ERROR_DESCRIPTION.call(400, "Message requires at least one sender")
     }
 
     def initialize
