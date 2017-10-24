@@ -16,10 +16,10 @@ RSpec.describe User do
         expect(user.errors[:email]).to include("is not an email")
       end
     end
-    
+
     context "with a valid email and password" do
       it "should be successful"  do
-        user = User.new(email: 'test@test.com', password: '123456')
+        user = User.new(email: 'test@test.com', password: '123456', username: 'testuser')
         expect(user.valid?).to eq(true)
       end
     end
