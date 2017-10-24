@@ -16,7 +16,8 @@ module Api
             end
 
             def create
-              message_generator = MessageGenerator.new(user_id: 1, message_params: message_params)
+              # temporarily use params[:id] until logged_in user logic is set
+              message_generator = MessageGenerator.new(user_id: params[:user_id], message_params: message_params)
               render json: message_generator.message
             end
 
