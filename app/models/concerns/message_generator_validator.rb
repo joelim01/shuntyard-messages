@@ -2,6 +2,7 @@ class MessageGeneratorValidator < ActiveModel::Validator
   def validate(record)
     @record = record
     validate_recipients
+    validate_sender
     validate_body
     validate_subject
   end
@@ -12,6 +13,10 @@ class MessageGeneratorValidator < ActiveModel::Validator
 
   def validate_recipients
     raise ApiExceptions::MessageError::MissingRecipient.new if @record.recipients.blank?
+  end
+
+  def validate_sender
+    raise ApiExceptions::MessageError::MissingSender.new if @record.sender.blank?
   end
 
   def validate_body
